@@ -1,0 +1,27 @@
+@import url("./fonts/fonts.scss");
+
+:root {
+    font-family:  'Nekst', 'Gilroy';
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+  }
+
+  .title {
+    font-family: 'Nekst';
+    font-weight: 900;
+    font-size: 54px;
+    line-height: 90%;
+    color: #111111;
+    padding-bottom: 32px;
+  }
+
+
+
+
