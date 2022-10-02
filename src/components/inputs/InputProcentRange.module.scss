@@ -30,6 +30,16 @@
   font-size: 20px;
   line-height: 120%;
   color: #575757;
+  transition: background 0.3s ease-in-out;
+}
+
+.input__procent:focus {
+  background: white;
+  outline: none;
+}
+
+.input__procent:disabled {
+  opacity: 0.4;
 }
 
 .input__label {
@@ -62,6 +72,10 @@
   height: 1px;
 }
 
+.input__range:disabled {
+  opacity: 0.4;
+}
+
 .input__range::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 20px;
@@ -92,6 +106,10 @@
   border-radius: 50%;
   background: #FF9514;
   cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.4;
 }
 
 @media screen and (max-width: 1024px) {

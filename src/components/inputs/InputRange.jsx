@@ -6,6 +6,7 @@ import {
   toPlainString,
   checkLimits,
 } from '../../utils/functions'
+import classNames from 'classnames'
 
 const InputRange = ({ data, min, max, label, onChange, value, step = 1, disabled = false }) => {
   const handleBlur = ({ target }) => {
@@ -22,7 +23,7 @@ const InputRange = ({ data, min, max, label, onChange, value, step = 1, disabled
 
   return (
     <div className={styles.box}>
-      <label className={styles.input__label} htmlFor={data}>
+      <label className={classNames(styles.input__label, disabled && styles.disabled) } htmlFor={data}>
         {label}
       </label>
       <div className={styles.input}>
@@ -35,7 +36,7 @@ const InputRange = ({ data, min, max, label, onChange, value, step = 1, disabled
           onChange={handleChange}
           disabled={disabled}
         />
-        <span className={styles.input__data}>{data}</span>
+        <span className={classNames(styles.input__data, disabled && styles.disabled) }>{data}</span>
         <div className={styles.range_container}>
           <input
             type='range'

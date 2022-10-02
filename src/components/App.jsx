@@ -48,7 +48,6 @@ function App() {
         <Row>
           <Col lg={'12'} md={'12'} xl={'4'}>
             <InputRange
-              disabled
               data={'₽'}
               step={100000}
               min={1000000}

@@ -1,8 +1,9 @@
 import { React, useState, useEffect } from 'react'
 import styles from './InputProcentRange.module.scss'
 import { getBackgroundSize, numberWithSpaces, toPlainString, checkLimits } from '../../utils/functions'
+import classNames from 'classnames'
 
-const InputProcentRange = ({ data, min, max, label, onChange, value, step = 1 }) => {
+const InputProcentRange = ({ data, min, max, label, onChange, value, step = 1, disabled = false }) => {
   const handleBlur = ({ target }) => {
     const { value } = target
     const digVal = Number(toPlainString(value))
@@ -17,12 +18,12 @@ const InputProcentRange = ({ data, min, max, label, onChange, value, step = 1 })
 
   return (
     <div className={styles.box}>
-      <label className={styles.input__label} htmlFor={data}>
+      <label className={classNames(styles.input__label, disabled && styles.disabled) } htmlFor={data}>
         {label}
       </label>
       <div className={styles.input}>
         <div className={styles.input__text}>
-          <span>{numberWithSpaces(data)}</span>
+          <span className={classNames(disabled && styles.disabled)} >{numberWithSpaces(data)}</span>
           <input
             className={styles.input__procent}
             id={data}
@@ -30,6 +31,7 @@ const InputProcentRange = ({ data, min, max, label, onChange, value, step = 1 })
             value={`${value}`}
             onBlur={handleBlur}
             onChange={handleChange}
+            disabled={disabled}
           />
         </div>
         <div className={styles.range_container}>
@@ -42,6 +44,7 @@ const InputProcentRange = ({ data, min, max, label, onChange, value, step = 1 })
             onChange={handleChange}
             style={getBackgroundSize(value, min, max)}
             value={value}
+            disabled={disabled}
           />
         </div>
       </div>

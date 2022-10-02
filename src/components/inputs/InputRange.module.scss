@@ -25,9 +25,7 @@
 }
 
 .input__text:disabled {
-  background: #F3F3F4;
-  color: gray;
-  border: 2px solid #F3F3F4;
+  opacity: 0.4;
 }
 
 .input__data {
@@ -74,6 +72,10 @@
   height: 1px;
 }
 
+.input__range:disabled {
+  opacity: 0.4;
+}
+
 .input__range::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 20px;
@@ -107,7 +109,7 @@
 }
 
 .disabled {
-  color: gray;
+  opacity: 0.4;
 }
 
 @media screen and (max-width: 1024px) {
