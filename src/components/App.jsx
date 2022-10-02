@@ -85,7 +85,7 @@ function App() {
           <Col xl={'4'} md={'6'} lg={'4'}>
             <ShowDataComponent label={'Ежемесячный платеж от'} data={getMonthPay()} />
           </Col>
-          <Col lg={'4'} xl={'4'}>
+          <Col sm={'6'} lg={'4'} xl={'4'}>
             <Button>Оставить заявку</Button>
           </Col>
         </Row>
