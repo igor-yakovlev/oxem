@@ -24,6 +24,12 @@
   border: 2px solid #F3F3F4;
 }
 
+.input__text:disabled {
+  background: #F3F3F4;
+  color: gray;
+  border: 2px solid #F3F3F4;
+}
+
 .input__data {
   position: absolute;
   top: 0;
@@ -45,17 +51,6 @@
   line-height: 20px;
   color: #575757;
   padding-bottom: 24px;
-}
-
-
-.input__text::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.input__text::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .range_container {
@@ -109,4 +104,14 @@
   border-radius: 50%;
   background: #FF9514;
   cursor: pointer;
+}
+
+.disabled {
+  color: gray;
+}
+
+@media screen and (max-width: 1024px) {
+  .box {
+    margin-top: 39px;
+  }
 }

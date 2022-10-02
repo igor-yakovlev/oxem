@@ -13,3 +13,15 @@
   line-height: 90%;
   color: #575757;
 }
+
+@media screen and (max-width: 320px) {
+  .data__label {
+    font-size: 14px;
+    line-height: 136%;
+  }
+
+  .data__text {
+    font-size: 22px;
+    line-height: 20px;
+  }
+}

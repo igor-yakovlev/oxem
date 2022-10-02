@@ -41,16 +41,6 @@
   padding-bottom: 24px;
 }
 
-.input__text::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.input__text::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 .range_container {
   position: absolute;
   left: 0;
@@ -102,4 +92,10 @@
   border-radius: 50%;
   background: #FF9514;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .box {
+    margin-top: 39px;
+  }
 }

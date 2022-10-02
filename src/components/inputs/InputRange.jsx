@@ -7,7 +7,7 @@ import {
   checkLimits,
 } from '../../utils/functions'
 
-const InputRange = ({ data, min, max, label, onChange, value, step = 1 }) => {
+const InputRange = ({ data, min, max, label, onChange, value, step = 1, disabled = false }) => {
   const handleBlur = ({ target }) => {
     const { value } = target
     const digVal = Number(toPlainString(value))
@@ -21,7 +21,7 @@ const InputRange = ({ data, min, max, label, onChange, value, step = 1 }) => {
   }
 
   return (
-    <>
+    <div className={styles.box}>
       <label className={styles.input__label} htmlFor={data}>
         {label}
       </label>
@@ -33,6 +33,7 @@ const InputRange = ({ data, min, max, label, onChange, value, step = 1 }) => {
           value={numberWithSpaces(value)}
           onBlur={handleBlur}
           onChange={handleChange}
+          disabled={disabled}
         />
         <span className={styles.input__data}>{data}</span>
         <div className={styles.range_container}>
@@ -45,10 +46,11 @@ const InputRange = ({ data, min, max, label, onChange, value, step = 1 }) => {
             onChange={handleChange}
             style={getBackgroundSize(value, min, max)}
             value={value}
+            disabled={disabled}
           />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

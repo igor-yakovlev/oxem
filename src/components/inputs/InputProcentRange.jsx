@@ -16,7 +16,7 @@ const InputProcentRange = ({ data, min, max, label, onChange, value, step = 1 })
   }
 
   return (
-    <>
+    <div className={styles.box}>
       <label className={styles.input__label} htmlFor={data}>
         {label}
       </label>
@@ -45,7 +45,7 @@ const InputProcentRange = ({ data, min, max, label, onChange, value, step = 1 })
           />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
