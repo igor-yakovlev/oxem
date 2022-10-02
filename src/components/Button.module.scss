@@ -1,0 +1,26 @@
+.button {
+  padding: 14px 16px 12px;
+  width: 426px;
+  height: 68px;
+  background: #FF9514;
+  border-radius: 40px;
+  border: none;
+  font-family: 'Nekst';
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 36px;
+  color: #FFFFFF;
+  transition: background 0.3s linear;
+}
+
+.button:hover {
+  background: #111111;
+}
+
+.button:disabled {
+  background: rgba(255, 149, 20, 0.4);
+}
+
+.button:active {
+  background: #575757;
+}

@@ -1,14 +1,29 @@
 import { Container, Row, Col } from 'react-bootstrap'
-import InputRange from './InputRange'
+import InputRange from './inputs/InputRange'
+import InputProcentRange from './inputs/InputProcentRange'
+import ShowDataComponent from '../components/ShowDataComponent'
+import Button from '../components/Button'
 import { useState } from 'react'
+import { getBackgroundSize, numberWithSpaces, toPlainString, checkLimits } from '../utils/functions'
 
 function App() {
   const [price, setPrice] = useState(1000000)
   const [initialProcentFee, setInitialProcentFee] = useState(10)
-  const [term, setTerm] = useState(1)
+  const [months, setMonths] = useState(1)
 
   const getInitialFee = () => {
-    return Math.ceil((initialProcentFee * 100) / price)
+    return Math.ceil((initialProcentFee * price) / 100)
+  }
+
+  const getMonthPay = () => {
+    return Math.ceil(
+      (price - getInitialFee()) *
+        ((0.035 * Math.pow(1 + 0.035, months)) / (Math.pow(1 + 0.035, months) - 1)),
+    )
+  }
+
+  const getAmountAgreement = () => {
+    return getInitialFee() + months * getMonthPay()
   }
 
   const handleChangePrice = (price) => {
@@ -19,19 +34,19 @@ function App() {
     setInitialProcentFee(initialFee)
   }
 
-  const handleChangeTerm = (term) => {
-    setTerm(term)
+  const handleChangeMonths = (months) => {
+    setMonths(months)
   }
 
   return (
     <Container className='p-0 m-5'>
       <Row className='mt-5'>
-        <Col md={'6'}>
+        <Col md={'8'} xl={'6'}>
           <h1 className='title'>Рассчитайте стоимость автомобиля в лизинг</h1>
         </Col>
       </Row>
       <Row>
-        <Col md={'4'}>
+        <Col md={'12'} xl={'4'}>
           <InputRange
             data={'₽'}
             step={100000}
@@ -42,9 +57,9 @@ function App() {
             onChange={handleChangePrice}
           />
         </Col>
-        <Col md={'4'}>
-          <InputRange
-            data={`${initialProcentFee}%`}
+        <Col md={'12'} xl={'4'}>
+          <InputProcentRange
+            data={getInitialFee()}
             min={10}
             max={60}
             label={'Первоначальный взнос'}
@@ -52,15 +67,26 @@ function App() {
             onChange={handleChangeInitialProcentFee}
           />
         </Col>
-        <Col md={'4'}>
+        <Col md={'12'} xl={'4'}>
           <InputRange
             data={'мес.'}
             min={1}
             max={60}
             label={'Срок лизинга'}
-            value={term}
-            onChange={handleChangeTerm}
+            value={months}
+            onChange={handleChangeMonths}
           />
+        </Col>
+      </Row>
+      <Row className='mt-5'>
+        <Col xl={'4'} md={'6'}>
+          <ShowDataComponent label={'Сумма договора лизинга'} data={getAmountAgreement()} />
+        </Col>
+        <Col xl={'4'} md={'4'}>
+          <ShowDataComponent label={'Ежемесячный платеж от'} data={getMonthPay()} />
+        </Col>
+        <Col xl={'4'}>
+          <Button>Оставить заявку</Button>
         </Col>
       </Row>
     </Container>
