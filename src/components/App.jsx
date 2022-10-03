@@ -68,7 +68,7 @@ function App() {
 
   return (
     <Container>
-      <Row className='mt-5'>
+      <Row>
         <Col lg={'8'} md={'12'} xl={'6'}>
           <h1 className='title'>Рассчитайте стоимость автомобиля в лизинг</h1>
         </Col>
@@ -111,7 +111,7 @@ function App() {
             />
           </Col>
         </Row>
-        <Row className='mt-5'>
+        <Row className="box">
           <Col xl={'4'} md={'6'} lg={'6'}>
             <ShowDataComponent label={'Сумма договора лизинга'} data={getAmountAgreement()} />
           </Col>

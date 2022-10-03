@@ -20,11 +20,33 @@
     font-size: 54px;
     line-height: 90%;
     color: $black;
-    padding-bottom: 32px;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    .title {
+      margin-top: 214px;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .title {
+      margin-top: 100px;
+      margin-bottom: 35px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .title {
+      margin-top: 64px;
+    }
   }
 
   @media screen and (max-width: 320px) {
     .title {
+      font-size: 34px;
+      margin-top: 44px;
+      margin-bottom: 32px;
       font-size: 34px;
       line-height: 90%;
     }
