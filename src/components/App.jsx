@@ -5,26 +5,35 @@ import ShowDataComponent from '../components/ShowDataComponent'
 import Button from '../components/Button'
 import { useState } from 'react'
 import { fromPercentToNumber } from '../utils/functions'
+import postData from '../utils/api'
 
 function App() {
   const [price, setPrice] = useState(1000000)
   const [procentFee, setProcentFee] = useState('10%')
   const [months, setMonths] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
 
   const getFee = () => {
     const cleanNumber = fromPercentToNumber(procentFee)
-    return Math.ceil((cleanNumber * price) / 100);
+    return Math.ceil((cleanNumber * price) / 100)
   }
 
   const getMonthPay = () => {
-    return Math.ceil(
+    const period = checkMonthsLimit(months)
+    const test = Math.ceil(
       (price - getFee()) *
-        ((0.035 * Math.pow(1 + 0.035, months)) / (Math.pow(1 + 0.035, months) - 1)),
+        ((0.035 * Math.pow(1 + 0.035, period)) / (Math.pow(1 + 0.035, period) - 1)),
     )
+    return test;
   }
 
   const getAmountAgreement = () => {
-    return getFee() + months * getMonthPay()
+    const period = checkMonthsLimit(months)
+    return getFee() + period * getMonthPay()
+  }
+
+  function checkMonthsLimit(months) {
+    return months < 1 ? 1: months;
   }
 
   const handleChangePrice = (price) => {
@@ -39,6 +48,24 @@ function App() {
     setMonths(months)
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    postData({
+      price: price,
+      procentFee: fromPercentToNumber(procentFee),
+      months: months,
+      amountAgreement: getAmountAgreement(),
+      monthPay:getMonthPay(),
+    })
+    .then(res => {
+      if (res) {
+
+      }
+    })
+    .finally(() => setIsLoading(false))
+  }
+
   return (
     <Container>
       <Row className='mt-5'>
@@ -46,7 +73,11 @@ function App() {
           <h1 className='title'>Рассчитайте стоимость автомобиля в лизинг</h1>
         </Col>
       </Row>
-      <form>
+      <form
+        action='#'
+        method='post'
+        onSubmit={handleSubmit}
+      >
         <Row>
           <Col lg={'12'} md={'12'} xl={'4'}>
             <InputRange
@@ -88,7 +119,7 @@ function App() {
             <ShowDataComponent label={'Ежемесячный платеж от'} data={getMonthPay()} />
           </Col>
           <Col sm={'6'} lg={'4'} xl={'4'}>
-            <Button disabled={false}>Оставить заявку</Button>
+            <Button disabled={isLoading} isLoading={isLoading}>Оставить заявку</Button>
           </Col>
         </Row>
       </form>

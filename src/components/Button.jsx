@@ -1,11 +1,13 @@
 import React from 'react'
 import styles from './Button.module.scss';
 import {noop} from '../utils/functions';
+import { Spinner } from 'react-bootstrap';
 
 const Button = ({
   disabled = false,
   children,
   onClick = noop,
+  isLoading = false,
 }) => {
   return (
     <button
@@ -13,7 +15,8 @@ const Button = ({
     onClick={onClick}
     className={styles.button}
     >
-      {children}
+
+      {isLoading ? <Spinner animation={'border'}/> : children}
     </button>
   )
 }
