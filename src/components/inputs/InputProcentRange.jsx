@@ -1,5 +1,5 @@
-import { React } from 'react'
-import styles from './InputProcentRange.module.scss'
+import { React } from 'react';
+import styles from './InputProcentRange.module.scss';
 import {
   getBackgroundSize,
   numberWithSpaces,
@@ -7,11 +7,12 @@ import {
   fromPercentToNumber,
   removePercent,
   removeLetter,
-} from '../../utils/functions'
-import classNames from 'classnames'
+} from '../../utils/functions';
+import classNames from 'classnames';
 
 const InputProcentRange = ({
   data,
+  id,
   min,
   max,
   label,
@@ -21,24 +22,24 @@ const InputProcentRange = ({
   disabled = false,
 }) => {
   const handleBlur = ({ target }) => {
-    const { value } = target
+    const { value } = target;
     const withoutLetters = removeLetter(value);
-    const digVal = fromPercentToNumber(withoutLetters)
-    const checkedVal = checkLimits(digVal, min, max)
-    const withPercent = removePercent(checkedVal)
-    onChange(withPercent)
-  }
+    const digVal = fromPercentToNumber(withoutLetters);
+    const checkedVal = checkLimits(digVal, min, max);
+    const withPercent = removePercent(checkedVal);
+    onChange(withPercent);
+  };
 
   const handleChange = ({ target }) => {
-    const { value } = target
+    const { value } = target;
     const withoutLetters = removeLetter(value);
     const withPercent = removePercent(withoutLetters);
-    onChange(withPercent)
-  }
+    onChange(withPercent);
+  };
 
   return (
     <div className={styles.box}>
-      <label className={classNames(styles.label, disabled && styles.disabled)} htmlFor={data}>
+      <label className={classNames(styles.label, disabled && styles.disabled)} htmlFor={id}>
         {label}
       </label>
       <div className={styles.input}>
@@ -46,7 +47,7 @@ const InputProcentRange = ({
           <span className={classNames(disabled && styles.disabled)}>{numberWithSpaces(data)}</span>
           <input
             className={styles.input__procent}
-            id={data}
+            id={id}
             type='text'
             value={value}
             onBlur={handleBlur}
@@ -69,7 +70,7 @@ const InputProcentRange = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default InputProcentRange
+export default InputProcentRange;

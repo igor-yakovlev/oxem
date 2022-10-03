@@ -1,24 +1,14 @@
-import React from 'react'
+import React from 'react';
 import styles from './Button.module.scss';
-import {noop} from '../utils/functions';
+import { noop } from '../utils/functions';
 import { Spinner } from 'react-bootstrap';
 
-const Button = ({
-  disabled = false,
-  children,
-  onClick = noop,
-  isLoading = false,
-}) => {
+const Button = ({ disabled = false, children, onClick = noop, isLoading = false }) => {
   return (
-    <button
-    disabled={disabled}
-    onClick={onClick}
-    className={styles.button}
-    >
-
-      {isLoading ? <Spinner className={styles.spinner} animation={'border'}/> : children}
+    <button disabled={disabled} onClick={onClick} className={styles.button}>
+      {isLoading ? <Spinner animation={'border'}/> : children}
     </button>
-  )
-}
+  );
+};
 
 export default Button;

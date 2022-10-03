@@ -17,16 +17,11 @@
   .title {
     font-family: 'Nekst';
     font-weight: 900;
+    margin-top: 214px;
     font-size: 54px;
     line-height: 90%;
     color: $black;
     margin-bottom: 20px;
-  }
-
-  @media screen and (max-width: 1440px) {
-    .title {
-      margin-top: 214px;
-    }
   }
 
   @media screen and (max-width: 1024px) {
