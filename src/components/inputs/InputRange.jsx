@@ -5,20 +5,24 @@ import {
   numberWithSpaces,
   toPlainString,
   checkLimits,
+  removeLetter,
 } from '../../utils/functions'
 import classNames from 'classnames'
 
 const InputRange = ({ data, min, max, label, onChange, value, step = 1, disabled = false }) => {
+
   const handleBlur = ({ target }) => {
     const { value } = target
-    const digVal = Number(toPlainString(value))
+    const withoutLetters = removeLetter(value);
+    const digVal = Number(toPlainString(withoutLetters))
     const checkedVal = checkLimits(digVal, min, max)
     onChange(checkedVal)
   }
 
   const handleChange = ({ target }) => {
     const { value } = target
-    const digVal = Number(toPlainString(value))
+    const withoutLetters = removeLetter(value);
+    const digVal = Number(toPlainString(withoutLetters))
     onChange(digVal)
   }
 

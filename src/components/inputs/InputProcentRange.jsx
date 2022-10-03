@@ -6,6 +6,7 @@ import {
   checkLimits,
   fromPercentToNumber,
   removePercent,
+  removeLetter,
 } from '../../utils/functions'
 import classNames from 'classnames'
 
@@ -21,7 +22,8 @@ const InputProcentRange = ({
 }) => {
   const handleBlur = ({ target }) => {
     const { value } = target
-    const digVal = fromPercentToNumber(value)
+    const withoutLetters = removeLetter(value);
+    const digVal = fromPercentToNumber(withoutLetters)
     const checkedVal = checkLimits(digVal, min, max)
     const withPercent = removePercent(checkedVal)
     onChange(withPercent)
@@ -29,7 +31,8 @@ const InputProcentRange = ({
 
   const handleChange = ({ target }) => {
     const { value } = target
-    const withPercent = removePercent(value)
+    const withoutLetters = removeLetter(value);
+    const withPercent = removePercent(withoutLetters);
     onChange(withPercent)
   }
 

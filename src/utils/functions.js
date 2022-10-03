@@ -27,7 +27,11 @@ export function fromPercentToNumber(value) {
 }
 
 export function removePercent(value) {
-  return value.toString().replace(/%/g, '').replace(/(.*)/, '$1%')
+  return value.toString().replace(/[^\d]/g,'').replace(/%/g, '').replace(/(.*)/, '$1%')
+}
+
+export function removeLetter(value) {
+  return value.replace(/[^\d]/g,'')
 }
 
 export function noop () {
