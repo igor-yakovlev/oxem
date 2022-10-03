@@ -4,33 +4,35 @@ import InputProcentRange from './inputs/InputProcentRange'
 import ShowDataComponent from '../components/ShowDataComponent'
 import Button from '../components/Button'
 import { useState } from 'react'
+import { fromPercentToNumber } from '../utils/functions'
 
 function App() {
   const [price, setPrice] = useState(1000000)
-  const [initialProcentFee, setInitialProcentFee] = useState(10)
+  const [procentFee, setProcentFee] = useState('10%')
   const [months, setMonths] = useState(1)
 
-  const getInitialFee = () => {
-    return Math.ceil((initialProcentFee * price) / 100)
+  const getFee = () => {
+    const cleanNumber = fromPercentToNumber(procentFee)
+    return Math.ceil((cleanNumber * price) / 100);
   }
 
   const getMonthPay = () => {
     return Math.ceil(
-      (price - getInitialFee()) *
+      (price - getFee()) *
         ((0.035 * Math.pow(1 + 0.035, months)) / (Math.pow(1 + 0.035, months) - 1)),
     )
   }
 
   const getAmountAgreement = () => {
-    return getInitialFee() + months * getMonthPay()
+    return getFee() + months * getMonthPay()
   }
 
   const handleChangePrice = (price) => {
     setPrice(price)
   }
 
-  const handleChangeInitialProcentFee = (initialFee) => {
-    setInitialProcentFee(initialFee)
+  const handleChangeProcentFee = (procentFee) => {
+    setProcentFee(procentFee)
   }
 
   const handleChangeMonths = (months) => {
@@ -59,12 +61,12 @@ function App() {
           </Col>
           <Col md={'12'} xl={'4'}>
             <InputProcentRange
-              data={getInitialFee()}
+              data={getFee()}
               min={10}
               max={60}
               label={'Первоначальный взнос'}
-              value={initialProcentFee}
-              onChange={handleChangeInitialProcentFee}
+              value={procentFee}
+              onChange={handleChangeProcentFee}
             />
           </Col>
           <Col md={'12'} xl={'4'}>
@@ -86,7 +88,7 @@ function App() {
             <ShowDataComponent label={'Ежемесячный платеж от'} data={getMonthPay()} />
           </Col>
           <Col sm={'6'} lg={'4'} xl={'4'}>
-            <Button>Оставить заявку</Button>
+            <Button disabled={false}>Оставить заявку</Button>
           </Col>
         </Row>
       </form>

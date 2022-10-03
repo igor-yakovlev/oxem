@@ -22,6 +22,14 @@ export function checkLimits(value, min, max) {
   }
 }
 
+export function fromPercentToNumber(value) {
+  return Number(value.toString().replace(/%/g, ''))
+}
+
+export function removePercent(value) {
+  return value.toString().replace(/%/g, '').replace(/(.*)/, '$1%')
+}
+
 export function noop () {
   return  null;
 }

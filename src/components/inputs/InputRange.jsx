@@ -18,7 +18,8 @@ const InputRange = ({ data, min, max, label, onChange, value, step = 1, disabled
 
   const handleChange = ({ target }) => {
     const { value } = target
-    onChange(value)
+    const digVal = Number(toPlainString(value))
+    onChange(digVal)
   }
 
   return (
