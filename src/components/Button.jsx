@@ -16,7 +16,7 @@ const Button = ({
     className={styles.button}
     >
 
-      {isLoading ? <Spinner animation={'border'}/> : children}
+      {isLoading ? <Spinner className={styles.spinner} animation={'border'}/> : children}
     </button>
   )
 }

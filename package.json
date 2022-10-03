@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "predeploy": "vite build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "vite build --base=./",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview",
     "lint": "eslint src/**/*.{js,jsx,json}",
     "lint:fix": "eslint --fix ' src/**/*.{js,jsx,json}'",

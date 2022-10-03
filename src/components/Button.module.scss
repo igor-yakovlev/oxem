@@ -27,8 +27,27 @@
   background: $orange_disabled;
 }
 
+.spinner {
+  font-weight: 300;
+}
+
 @media screen and (max-width: 1024px) {
   .button {
     margin-top: 44px;
+    margin-bottom: 120px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    margin-bottom: 156px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .button {
+    margin-bottom: 64px;
+    font-size: 22px;
+    line-height: 20px;
   }
 }
