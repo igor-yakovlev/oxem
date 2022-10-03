@@ -1,26 +1,29 @@
-.data__label {
+@import '../styles/colors.scss';
+
+.label {
   font-family: 'Gilroy';
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  color: #575757;
+  color: $gray;
 }
 
-.data__text {
+.descr {
+  margin-top: 8px;
   font-family: 'Nekst';
   font-weight: 900;
   font-size: 54px;
   line-height: 90%;
-  color: #575757;
+  color: $gray;
 }
 
 @media screen and (max-width: 320px) {
-  .data__label {
+  .label {
     font-size: 14px;
     line-height: 136%;
   }
 
-  .data__text {
+  .text {
     font-size: 22px;
     line-height: 20px;
   }

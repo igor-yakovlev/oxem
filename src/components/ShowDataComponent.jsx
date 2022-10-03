@@ -5,10 +5,10 @@ import { getBackgroundSize, numberWithSpaces, toPlainString, checkLimits } from 
 const ShowDataComponent = ({label, data}) => {
   return (
     <div>
-      <span className={styles.data__label}>
+      <span className={styles.label}>
         {label}
       </span>
-      <h2 className={styles.data__text}>
+      <h2 className={styles.descr}>
         {`${numberWithSpaces(data)} ₽`}
       </h2>
     </div>

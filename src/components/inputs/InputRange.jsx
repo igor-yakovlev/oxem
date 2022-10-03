@@ -23,7 +23,7 @@ const InputRange = ({ data, min, max, label, onChange, value, step = 1, disabled
 
   return (
     <div className={styles.box}>
-      <label className={classNames(styles.input__label, disabled && styles.disabled) } htmlFor={data}>
+      <label className={classNames(styles.label, disabled && styles.disabled) } htmlFor={data}>
         {label}
       </label>
       <div className={styles.input}>
@@ -36,8 +36,8 @@ const InputRange = ({ data, min, max, label, onChange, value, step = 1, disabled
           onChange={handleChange}
           disabled={disabled}
         />
-        <span className={classNames(styles.input__data, disabled && styles.disabled) }>{data}</span>
-        <div className={styles.range_container}>
+        <span className={classNames(styles.data, disabled && styles.disabled) }>{data}</span>
+        <div className={styles.container}>
           <input
             type='range'
             step={step}
